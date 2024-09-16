@@ -31,7 +31,7 @@ resource "aws_instance" "web" {
 
 resource "aws_security_group" "blog" {
   name = "blog"
-  Description = "Allow http and https in. Allow everything out."
+  description = "Allow http and https in. Allow everything out."
 
   vpc_id = "data.aws_vpc.default.id"
 }
@@ -60,8 +60,8 @@ resource "aws_security_group_rule" "blog_outbond" {
   type         = "egress"
   from_port    = "0"
   to_port      = "0"
-  protocol     = "tcp"
-  cidr_blocks  = "-1"
+  protocol     = "-1"
+  cidr_blocks  = ["0.0.0.0/0"]
 
   security_group_id = "aws_security_group.blog.id"
 }
