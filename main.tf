@@ -54,24 +54,16 @@ module "alb" {
 
 
   listeners = {
-    ex-http-https-redirect = {
       port     = 80
       protocol = "HTTP"
-    }
-
-      forward = {
-        target_group_key = "ex-instance"
-      }
   }
 
   target_groups = {
-    ex-instance = {
       name_prefix      = "blog"
       protocol         = "HTTP"
       port             = 80
       target_type      = "instance"
       target_id        = aws_instance.blog.id
-    }
   }
 
   tags = {
