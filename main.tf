@@ -47,10 +47,10 @@ resource "aws_instance" "web" {
 module "alb" {
   source = "terraform-aws-modules/alb/aws"
 
-  name    = "blog_alb"
-  vpc_id  = module.blog_vpc.vpc_id
-  subnets = module.blog_vpc.public_subnets
-  security_group_id = [module.blog_sg.security_group_id]
+  name            = "blog_alb"
+  vpc_id          = module.blog_vpc.vpc_id
+  subnets         = module.blog_vpc.public_subnets
+  security_groups = [module.blog_sg.security_group_id]
 
 
   listeners = {
